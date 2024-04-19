@@ -13,4 +13,17 @@ CS-512 Deep Learning class project
         `The important thing is to understand the transformer arch and how we are employing it. So, let's all try out best to understand transformers`
 3. it might be applicalble to use ESM which is a protein L model that take the WT seq and the Mutated seq and derives some important features. https://github.com/facebookresearch/esm ❗ (priority)
 4. We need to decide on a proper arch to use. (Model design)
-5. Do initial training.. 
+5. Do initial training..
+
+
+## Workflow
+
+| Step          | Description                                                                   | Status       | Deadline     |
+|---------------|-------------------------------------------------------------------------------|--------------|--------------|
+| Data Prep     | Integration of phact-related measures into the dataset.                       | In Progress | -            |
+| Normalization | Normalize the target variable within each dataset.                            | Pending      | -            |
+| Transformer Understanding | Everyone familiarizes themselves with transformer architecture.        | Pending      | -            |
+| ESM Integration | Explore and implement ESM for feature extraction from protein sequences.   | Priority     | -            |
+| Model Design  | Decide on an appropriate architecture for the model.                          | Pending      | -            |
+| Initial Training | Perform initial training of the model.                                        | Pending      | -            |
+
