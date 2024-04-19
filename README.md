@@ -18,12 +18,11 @@ CS-512 Deep Learning class project
 
 ## Workflow
 
-| Step          | Description                                                                   | Status       | Deadline     |
-|---------------|-------------------------------------------------------------------------------|--------------|--------------|
-| Data Prep     | Integration of phact-related measures into the dataset.                       | In Progress | -            |
-| Normalization | Normalize the target variable within each dataset.                            | Pending      | -            |
-| Transformer Understanding | Everyone familiarizes themselves with transformer architecture.        | Pending      | -            |
-| ESM Integration | Explore and implement ESM for feature extraction from protein sequences.   | Priority     | -            |
-| Model Design  | Decide on an appropriate architecture for the model.                          | Pending      | -            |
-| Initial Training | Perform initial training of the model.                                        | Pending      | -            |
 
+| Step          | Description                                                                   | Time Needed | Deadline     |
+|---------------|-------------------------------------------------------------------------------|-------------|--------------|
+| Data Prep     | Integration of phact-related measures into the dataset.                       |  1 day      |             |
+| Transformer Understanding | Everyone familiarizes themselves with transformer architecture.        | 1 day | ❗      |
+| ESM Integration | Explore and implement ESM for feature extraction from protein sequences.   | 1 day     | ❗      |
+| Model Design  | Decide on an appropriate architecture for the model.                          | 2 days      | -            |
+| Initial Training | Perform initial training of the model.                                        | ..       | -            |
