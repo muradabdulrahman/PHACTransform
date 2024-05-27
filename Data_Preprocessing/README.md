@@ -46,6 +46,7 @@ After completing all data preprocessing steps, the final concatenated CSV files 
 
 
 !!!!!!!!!!!!!!!!!
+
 In the final merged file there are only substitions that are matching in both concatenated DMS and PHACT score CSVs. I noticed that some of the substitutions are missed in the final CSV. The reason for that is the DMS score files nnot uses the exact amino acid positions in their substitution annotaions.
 
 This is an example of the final normalized CSV of a protein:
