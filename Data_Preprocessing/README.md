@@ -1,6 +1,6 @@
 # Data Pre-processing
 
-The PHACTransform project utilizes two different datasets: DMS score data from [ProteinGym](https://proteingym.org/) and PHACT scores from [PHACTboost](https://www.biorxiv.org/content/10.1101/2024.01.30.577938v1).
+The PHACTransform project utilizes two different datasets: DMS score data from [ProteinGym](https://proteingym.org/download) and PHACT scores from [PHACTboost](https://www.biorxiv.org/content/10.1101/2024.01.30.577938v1).
 
 ## DMS Data
 
