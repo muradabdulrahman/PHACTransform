@@ -16,6 +16,9 @@ To retrieve only the human proteins from the entire dataset, we utilized the [`g
 
 The initial data files were named according to the protein names, species, and experiments, including unnecessary parts. To maintain consistency, we decided to rename the files using UniProt IDs. First, we extracted the protein names from the file names with the [`abstract_protein_names.py`](./scripts/abstract_protein_names.py) script, which writes the protein names into a CSV file named `protein_names.csv`. UniProt IDs were then manually added to the CSV file and used for renaming the DMS score files with the [`rename_DMS_files.py`](./scripts/rename_DMS_files.py) script.
 
+### Correcting the Annotations of the Mutations
+In some DMS experiments, partial protein sequences were used instead of whole sequences. The mutation positions were annotated based on these partial sequences. To prevent mapping errors with the PHACT score data (which uses the original positions from whole sequences), we updated the annotations using the [`change_annotations.py`](./scripts/change_annotations.py) script. During this process, we discovered that for some proteins, the mutated sequences did not match the sub-sequences of the original (canonical) protein sequences. Consequently, we eliminated those 18 proteins, resulting in a dataset of 232,209 data points (mutations).
+
 ### Normalization of the DMS Scores
 
 #### Normalization and Reshaping of the Data
@@ -44,18 +47,3 @@ After transforming and gathering the data, we concatenated all PHACT score files
 
 After completing all data preprocessing steps, the final concatenated CSV files of PHACT and DMS scores were merged into a single file using the [`merge_CSVs.py`](./scripts/merge_CSVs.py) script.
 
-
-!!!!!!!!!!!!!!!!!
-
-In the final merged file there are only substitions that are matching in both concatenated DMS and PHACT score CSVs. I noticed that some of the substitutions are missed in the final CSV. The reason for that is the DMS score files nnot uses the exact amino acid positions in their substitution annotaions.
-
-This is an example of the final normalized CSV of a protein:
-```
-query_id,mutant,mutated_sequence,DMS_score,DMS_score_bin
-O00257,A1C,CVESIEKKRIRKGRVEYLVKWRGWSPKYNTWEPEENILDPRLLIAFQNRE,0.9402990147122778,1
-O00257,A1D,DVESIEKKRIRKGRVEYLVKWRGWSPKYNTWEPEENILDPRLLIAFQNRE,0.8690069752655201,1
-O00257,A1E,EVESIEKKRIRKGRVEYLVKWRGWSPKYNTWEPEENILDPRLLIAFQNRE,0.9247180481451349,1
-```
-If you look at the "mutant"s the position "1" is corresponding to the position of amino acid "A" in the "mutated_sequence". Normally position 1st should me "M". Because of this some of the mutaitons are not matching with the PHACTdata when merging CSVs and it resuşts with some losts. This mutated sequence is different for each protein in the data set and refers to the part of the protein that are used in DMS experiments. But partial sequence usage is not the case for all of the proteins. I think only some of them has partial ones. It is stated in the [metadata table](filtered_DMS_human_metadata.csv) under the "region_mutated" section.
-
-Ading an extra checking step to the preprocessing step can solve this. These annotations should be re-written with correct positions of the amino acisds in order to match with the PHACT data. To do that, a script that will search the mutated region in the actual sequence of the protein and find the true corresponding position in the whole sequence can solve the problem. After finding the correct position annonations of the substitions could be re-written. 
