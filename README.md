@@ -19,41 +19,41 @@ The DMS dataset includes deep mutational scanning scores from 217 proteins of va
 
 #### Gathering Human DMS Data
 
-To retrieve only the human proteins from the entire dataset, we utilized the [`gatherHumanDMS.py`](./scripts/gatherHumanDMS.py) script with the [filtered metadata](filtered_DMS_human_metadata.csv).
+To retrieve only the human proteins from the entire dataset, we utilized the [`gatherHumanDMS.py`](./Data_Preprocessing/scripts/gatherHumanDMS.py) script with the [filtered metadata](filtered_DMS_human_metadata.csv).
 
 #### Renaming Files
 
-The initial data files were named according to the protein names, species, and experiments, including unnecessary parts. To maintain consistency, we decided to rename the files using UniProt IDs. First, we extracted the protein names from the file names with the [`abstract_protein_names.py`](./scripts/abstract_protein_names.py) script, which writes the protein names into a CSV file named `protein_names.csv`. UniProt IDs were then manually added to the CSV file and used for renaming the DMS score files with the [`rename_DMS_files.py`](./scripts/rename_DMS_files.py) script.
+The initial data files were named according to the protein names, species, and experiments, including unnecessary parts. To maintain consistency, we decided to rename the files using UniProt IDs. First, we extracted the protein names from the file names with the [`abstract_protein_names.py`](./Data_Preprocessing/scripts/abstract_protein_names.py) script, which writes the protein names into a CSV file named `protein_names.csv`. UniProt IDs were then manually added to the CSV file and used for renaming the DMS score files with the [`rename_DMS_files.py`](./Data_Preprocessing/scripts/rename_DMS_files.py) script.
 
 #### Correcting the Annotations of the Mutations
-In some DMS experiments, partial protein sequences were used instead of whole sequences. The mutation positions were annotated based on these partial sequences. To prevent mapping errors with the PHACT score data (which uses the original positions from whole sequences), we updated the annotations using the [`change_annotations.py`](./scripts/change_annotations.py) script. During this process, we discovered that for some proteins, the mutated sequences did not match the sub-sequences of the original (canonical) protein sequences. Consequently, we eliminated those 18 proteins, resulting in a dataset of 230,209 data points (mutations) from 68 proteins.
+In some DMS experiments, partial protein sequences were used instead of whole sequences. The mutation positions were annotated based on these partial sequences. To prevent mapping errors with the PHACT score data (which uses the original positions from whole sequences), we updated the annotations using the [`change_annotations.py`](./Data_Preprocessing/scripts/change_annotations.py) script. During this process, we discovered that for some proteins, the mutated sequences did not match the sub-sequences of the original (canonical) protein sequences. Consequently, we eliminated those 18 proteins, resulting in a dataset of 230,209 data points (mutations) from 68 proteins.
 
 ### Normalization of the DMS Scores
 
 #### Normalization and Reshaping of the Data
 
-DMS scores, generated from different experiments, varied in scaling. To provide consistent scores for the model, we normalized them. The initial data format included both SNPs and indel mutations. Since our project focuses on single amino acid mutations, we filtered out other mutation types. Additionally, we added UniProt IDs to each DMS file. This step was performed using the [`normalizeDMSscores.py`](./scripts/normalizeDMSscores.py) script.
+DMS scores, generated from different experiments, varied in scaling. To provide consistent scores for the model, we normalized them. The initial data format included both SNPs and indel mutations. Since our project focuses on single amino acid mutations, we filtered out other mutation types. Additionally, we added UniProt IDs to each DMS file. This step was performed using the [`normalizeDMSscores.py`](./Data_Preprocessing/scripts/normalizeDMSscores.py) script.
 
 #### Concatenating the DMS Score Files
 
-After reshaping and normalizing the data, we concatenated all DMS score files into a single file using the [`concatenate_CSVs.py`](./scripts/concatenate_CSVs.py) script.
+After reshaping and normalizing the data, we concatenated all DMS score files into a single file using the [`concatenate_CSVs.py`](./Data_Preprocessing/scripts/concatenate_CSVs.py) script.
 
 ## Gathering FASTA Files of the Proteins
 
-The FASTA files for the entire human proteome were already available in the PHACTboost dataset. We used the [`copy_fasta_files.py`](./scripts/copy_fasta_files.py) script to gather the FASTA files in one location to feed the model later.
+The FASTA files for the entire human proteome were already available in the PHACTboost dataset. We used the [`copy_fasta_files.py`](./Data_Preprocessing/scripts/copy_fasta_files.py) script to gather the FASTA files in one location to feed the model later.
 
 ## PHACTboost Data
 
 #### Transforming the PHACT Score Data
 
-The PHACT scores were initially formatted as a matrix of (protein length) x (twenty common amino acids), storing all possible single amino acid mutation scores for a protein. We needed these mutations and scores in columns. The [`transform_score_files.py`](./scripts/transform_score_files.py) script was used to gather and transform the PHACT scores from the PHACTboost dataset.
+The PHACT scores were initially formatted as a matrix of (protein length) x (twenty common amino acids), storing all possible single amino acid mutation scores for a protein. We needed these mutations and scores in columns. The [`transform_score_files.py`](./Data_Preprocessing/scripts/transform_score_files.py) script was used to gather and transform the PHACT scores from the PHACTboost dataset.
 
 #### Concatenating the PHACT Score Files
 
-After transforming and gathering the data, we concatenated all PHACT score files into one using the [`concatenate_CSVs.py`](./scripts/concatenate_CSVs.py) script.
+After transforming and gathering the data, we concatenated all PHACT score files into one using the [`concatenate_CSVs.py`](./Data_Preprocessing/scripts/concatenate_CSVs.py) script.
 
 ## Merging Final Datasets
 
-After completing all data preprocessing steps, the final concatenated CSV files of PHACT and DMS scores were merged into a single file using the [`merge_CSVs.py`](./scripts/merge_CSVs.py) script.
+After completing all data preprocessing steps, the final concatenated CSV files of PHACT and DMS scores were merged into a single file using the [`merge_CSVs.py`](./Data_Preprocessing/scripts/merge_CSVs.py) script.
 
 </details>
