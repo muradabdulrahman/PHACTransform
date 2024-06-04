@@ -52,8 +52,30 @@ The PHACT scores were initially formatted as a matrix of (protein length) x (twe
 
 After transforming and gathering the data, we concatenated all PHACT score files into one using the [`concatenate_CSVs.py`](./Data_Preprocessing/scripts/concatenate_CSVs.py) script.
 
+
 ## Merging Final Datasets
 
 After completing all data preprocessing steps, the final concatenated CSV files of PHACT and DMS scores were merged into a single file using the [`merge_CSVs.py`](./Data_Preprocessing/scripts/merge_CSVs.py) script.
 
 </details>
+
+
+
+
+| Parameter              | Value          |
+|------------------------|----------------|
+| Loss Function          | MSE            |
+| Weight Initialization  | Xavier         |
+| Dropout                | 0.02           |
+| Hidden Layers          | 1024           |
+| Batch Size             | 20             |
+| Epochs                 | 30             |
+| Learning Rate          | 0.0001         |
+| Optimizer              | ADAM           |
+| Activation             | RELU           |
+| Input Dimension        | 2561           |
+| Model Dimension        | 512            |
+| Multihead Attention    | 8              |
+| Number of Layers       | 6              |
+| MLP                    | 1024           |
+
