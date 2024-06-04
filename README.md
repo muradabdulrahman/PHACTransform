@@ -79,3 +79,18 @@ After completing all data preprocessing steps, the final concatenated CSV files 
 | Number of Layers       | 6              |
 | MLP                    | 1024           |
 
+
+
+
+| Parameter              | Values                        |
+|------------------------|-------------------------------|
+| Loss Function          | MSE                           |
+| Weight Initialization  | Xaiver                        |
+| Dropout                | 0.02, 0.2, 0.01, 0.1          |
+| Hidden Layers          | 64, 128, 512, 1024            |
+| Batch Size             | 10, 20, 36                    |
+| Epochs                 | 20, 30                        |
+| Learning Rate          | 0.01, 0.001, 0.0001           |
+| Optimizer              | ADAM                          |
+| Activation             | RELU, GELU                    |
+
