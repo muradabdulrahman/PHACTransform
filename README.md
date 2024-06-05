@@ -60,6 +60,7 @@ After completing all data preprocessing steps, the final concatenated CSV files 
 </details>
 
 
+Training Considerations
 
 
 | Parameter              | Value          |
@@ -80,7 +81,7 @@ After completing all data preprocessing steps, the final concatenated CSV files 
 | MLP                    | 1024           |
 
 
-
+The hyperparameter space
 
 | Parameter              | Values                        |
 |------------------------|-------------------------------|
@@ -93,6 +94,10 @@ After completing all data preprocessing steps, the final concatenated CSV files 
 | Learning Rate          | 0.01, 0.001, 0.0001           |
 | Optimizer              | ADAM                          |
 | Activation             | RELU, GELU                    |
+
+
+
+Training epochs and metrics
 
 
 | Epochs            | Loss   | MSE    | R^2    |
